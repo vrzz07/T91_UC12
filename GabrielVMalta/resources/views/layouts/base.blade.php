@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     Jogos
-                    - {{ Auth::user()->nome }}
+                    {{ Auth::user()->nome }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavFluxo"
                     aria-controls="navbarNavFluxo" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,17 +40,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavFluxo">
                     <div class="navbar-nav">
-                        <a class="nav-link" href="#">
-                           <i class="bi bi-house-door-fill"></i>
-                           Home
-                        </a>
                         <a class="nav-link" href="{{ route('jogo.index') }}">
-                            <i class="bi bi-piggy-bank-fill"></i>
                             Jogos
-                        </a>
-                        <a class="nav-link" href="{{ route('logout') }}">
-                            <i class="bi bi-box-arrow-right"></i>
-                            Sair
                         </a>
                     </div>
                 </div>

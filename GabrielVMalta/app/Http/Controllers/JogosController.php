@@ -13,16 +13,13 @@ class JogosController extends Controller
     {
         $pesquisar = $request->pesquisar;
 
-        $jogos = Jogo::where( function( $query ) use ($pesquisar){
+        $jogos = Jogo::where(function ($query) use ($pesquisar) {
 
-                    if($pesquisar){
-                        $query->where('descricao','like',"%{$pesquisar}%");
-                    }
+            if ($pesquisar) {
+                $query->where('descricao', 'like', "%{$pesquisar}%");
+            }})->paginate(5);
 
-        })->paginate(5);
-
-        return view('jogo.index')
-                    ->with(compact('jogos'));
+        return view('jogo.index')->with(compact('jogos'));
     }
 
     public function create()
@@ -40,9 +37,10 @@ class JogosController extends Controller
         return redirect()->route('jogo.index');
     }
 
-    public function show(Jogo $jogo)
+    public function show(int $id)
     {
-        //
+        $jogo = Jogo::find($id);
+        return view('jogo.show')->with(compact('jogo'));
     }
 
     public function edit(int $id)
@@ -63,6 +61,9 @@ class JogosController extends Controller
 
     public function destroy(int $id)
     {
-        //
+        $jogo = Jogo::find($id);
+        $jogo->delete();
+
+        return redirect()->route('jogo.index');
     }
 }

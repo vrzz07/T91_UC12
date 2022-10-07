@@ -34,5 +34,5 @@ Route::prefix('jogo')
         Route::get('/mostrar/{id}', 'show')->name('jogo.show');
         Route::post('/cadastrar', 'store')->name('jogo.store');
         Route::post('/atualizar/{id}', 'update')->name('jogo.update');
-        Route::post('/deletar/{id}', 'destroy')->name('jogo.destroy');
+        Route::get('/deletar/{id}', 'destroy')->name('jogo.destroy');
 });
